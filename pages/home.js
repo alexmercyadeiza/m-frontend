@@ -7,6 +7,7 @@ import ShoppingCart from "../components/public/shoppingcart";
 import PublicWrapper from "../components/public/PublicWrapper";
 import Header from '../components/public/Header';
 import Footer from '../components/public/Footer';
+import Wrapper from "../components/public/Grid/Wrapper";
 
 export default function Home() {
   const [sharedState, updateSharedState] = useAppContext();
@@ -25,66 +26,146 @@ export default function Home() {
       <PublicWrapper>
         <Header />
 
-        <SubHeader />
+        <div className="mx-auto max-w-screen-2xl w-full">
+          <SubHeader />
 
-        <div className="w-full border-b p-10">
-          <div className="flex items-center max-w-screen-2xl mx-auto justify-between">
-            <div className="flex items-center space-x-1 border px-3 py-2 rounded-xl hover:bg-stone-100 cursor-pointer border-stone-300">
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-gray-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                  />
-                </svg>
-              </div>
-              <div className="tracking-tight font-semibold text-gray-500">
-                All Products
+          <div class="grid lg:grid-cols-3 gap-2 h-[40rem]">
+            <div
+              class="bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+              style={{
+                backgroundImage: `url('https://images.pexels.com/photos/1994818/pexels-photo-1994818.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)`,
+              }}
+            >
+              <div class="p-10 text-white space-y-1">
+                <div class="text-3xl tracking-tight font-light">
+                  Hair Essentials
+                </div>
+                <div class="items-center flex space-x-1">
+                  <div class="text-xs">SHOP NOW</div>
+                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3 w-3"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div className="w-full max-w-screen-2xl mx-auto p-10 py-36">
-          <div className="grid grid-cols-5 gap-14">
-            {products.map((product) => (
-              <Product
-                key={product._id}
-                price={product.price}
-                currency={"$"}
-                name={product.name}
-                image={product.image}
-                addtocart={() => {
-                  addToCart(product);
+            <div class="hidden md:grid gap-2">
+              <div
+                class="bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+                style={{
+                  backgroundImage: `url(https://images.pexels.com/photos/2661255/pexels-photo-2661255.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)`,
                 }}
-              />
-            ))}
+              >
+                <div class="p-10 text-white space-y-1">
+                  <div class="text-3xl tracking-tight font-light capitalize">
+                    Tips
+                  </div>
+                  <div class="items-center flex space-x-1">
+                    <div class="text-xs uppercase">Learn more</div>
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-3 w-3"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+                style={{
+                  backgroundImage: `url('https://cdn.pixabay.com/photo/2021/09/23/17/13/shampoo-6650408_960_720.jpg')`,
+                }}
+              >
+                <div class="p-10 text-white space-y-1">
+                  <div class="text-3xl tracking-tight font-light">
+                    Hair Basics
+                  </div>
+                  <div class="items-center flex space-x-1">
+                    <div class="text-xs">SHOP NOW</div>
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-3 w-3"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+              style={{
+                backgroundImage: `url('https://images.pexels.com/photos/5650025/pexels-photo-5650025.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')`,
+              }}
+            >
+              <div class="p-10 space-y-1">
+                <div class="text-3xl tracking-tight font-light">On Sale</div>
+                <div class="items-center flex space-x-1">
+                  <div class="text-xs">SHOP NOW</div>
+                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3 w-3"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full py-36">
+            <div className="grid grid-cols-5 gap-14">
+              {products.map((product) => (
+                <Product
+                  key={product._id}
+                  price={product.price}
+                  currency={"$"}
+                  name={product.name}
+                  image={product.image}
+                  addtocart={() => {
+                    addToCart(product);
+                  }}
+                />
+              ))}
+            </div>
           </div>
         </div>
+
         <Footer />
       </PublicWrapper>
     </>

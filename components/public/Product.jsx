@@ -3,33 +3,8 @@ import Image from "next/image";
 
 export default function Product({ name, price, currency, image, addtocart }) {
   return (
-    // <div className="grid space-y-6">
-    //   <Like />
-    //   <div className="bg-stone-200 rounded-xl overflow-hidden">
-    //     <img
-    //       src={image}
-    //       className="object-cover object-center h-56 w-56"
-    //       alt={name}
-    //     />
-    //   </div>
-    //   <div className="space-y-1">
-    //     <div className="tracking-tight font-mono uppercase text-gray-500">{name}</div>
-    //     <div className="tracking-tight text-stone flex items-center justify-between">
-    //       <div className="text-xl text-gray-700 font-light font-mono">
-    //         {currency}
-    //         {price}
-    //       </div>
-    //       <div
-    //         onClick={addtocart}
-    //         className="text-2xs tracking-tight text-gray-600 cursor-pointer hover:text-gray-700"
-    //       >
-    //         Add to cart
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
     <div className="group">
-      <div className="w-full h-52 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+      <div className="w-full h-52 bg-gray-200 overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
         <img
           src={image}
           alt={name}
@@ -37,7 +12,7 @@ export default function Product({ name, price, currency, image, addtocart }) {
         />
       </div>
       <div className="mt-4 flex justify-between space-x-6 items-center">
-        <h3 className="text-sm text-gray-700 uppercase tracking-wide font-mono">
+        <h3 className="text-sm text-gray-700 tracking-tight capitalize">
           {name}
         </h3>
         <svg

@@ -42,10 +42,16 @@ export default function Payment() {
               <div className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="text-sm grid grid-flow-col auto-cols-max gap-8 items-center">
-                    <div className="text-gray-500">Contact</div>
-                    <div>pike@gmail.com</div>
+                    <div className="text-sm font-medium tracking-tight">
+                      Contact
+                    </div>
+                    <div className="text-sm font-light tracking-tight">
+                      pike@gmail.com
+                    </div>
                   </div>
-                  <div className="text-sm font-medium">Change</div>
+                  <div className="text-sm font-normal tracking-tight">
+                    Change
+                  </div>
                 </div>
               </div>
             </div>
@@ -54,10 +60,16 @@ export default function Payment() {
               <div className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="text-sm grid grid-flow-col auto-cols-max gap-8 items-center">
-                    <div className="text-gray-500">Ship to</div>
-                    <div>Jahi One, Abuja, 90001 Abuja FCT, NG</div>
+                    <div className="text-sm font-medium tracking-tight">
+                      Ship to
+                    </div>
+                    <div className="pl-1 text-sm font-light tracking-tight">
+                      Jahi One, Abuja, 90001 Abuja FCT, NG
+                    </div>
                   </div>
-                  <div className="text-sm font-medium">Change</div>
+                  <div className="text-sm font-normal tracking-tight">
+                    Change
+                  </div>
                 </div>
               </div>
             </div>
@@ -65,21 +77,21 @@ export default function Payment() {
             <div className="p-4">
               <div className="flex items-center justify-between">
                 <div className="text-sm grid grid-flow-col auto-cols-max gap-8 items-center">
-                  <div className="text-gray-500">Method</div>
-                  <div>
+                  <div className="text-sm font-medium tracking-tight">
+                    Method
+                  </div>
+                  <div className="text-sm font-light tracking-tight">
                     Pick up in store &bull; <span>Free</span>
                   </div>
                 </div>
-                <div className="text-sm font-medium">Change</div>
+                <div className="text-sm font-normal tracking-tight">Change</div>
               </div>
             </div>
           </div>
 
           <div className="pt-6">
-            <div className="text-lg font-medium font-mono text-gray-500 uppercase">
-              Payment
-            </div>
-            <div className="text-sm">
+            <div className="capitalize font-medium">Payment</div>
+            <div className="text-sm font-light tracking-tight">
               All transactions are secure and encrypted.
             </div>
           </div>
@@ -240,7 +252,7 @@ export default function Payment() {
                       </svg>
                     </div>
 
-                    <div className="text-xs text-center px-20">
+                    <div className="text-sm font-light text-center tracking-tight px-20">
                       After clicking "Complete order", you will be redirected to
                       Flutterwave to complete your purchase securely.
                     </div>
@@ -303,7 +315,7 @@ export default function Payment() {
                       </svg>
                     </div>
 
-                    <div className="text-xs text-center px-20">
+                    <div className="text-sm font-light tracking-tight text-center px-20">
                       After clicking "Complete order", you will be redirected to
                       Stripe to complete your purchase securely.
                     </div>
@@ -345,9 +357,9 @@ export default function Payment() {
 
               {/* Body  */}
               {status.ca && (
-                <div className="px-20 py-6">
+                <div className="px-28 py-6">
                   <div className="text-2xl text-center text-green-500 col-span-8">
-                    <span className="block mb-2 text-xs text-gray-500">
+                    <span className="block mb-2 text-sm font-light tracking-tight text-gray-500">
                       Make a transfer of{" "}
                       <span className="font-bold">$234.03</span> to this
                       $Cashtag and click on "Complete order".
@@ -378,7 +390,9 @@ export default function Payment() {
                       className="focus:ring-gray-500 self-center h-5 w-5 text-gray-600 border-gray-300 rounded-full"
                     />
                     {/* Flutterwave  */}
-                    <div className="text-lg font-bold">Bank Transfer</div>
+                    <div className="text-lg font-medium tracking-tight">
+                      Bank Transfer
+                    </div>
                   </div>
 
                   {/* Cards  */}
@@ -397,6 +411,11 @@ export default function Payment() {
 
               {status.bt && (
                 <div>
+                  <div className="px-6 pt-4 text-sm font-light tracking-tight">
+                    Make a direct transfer to the correct currency account below
+                    and click on "Complete Order".
+                  </div>
+
                   <div className="p-6 m-4 rounded-md bg-gray-50 hover:bg-gray-100 hover:shadow">
                     <div className="grid space-y-3">
                       <div className="text-sm font-bold text-green-500">
@@ -458,7 +477,7 @@ export default function Payment() {
                     </div>
                   </div>
 
-                  <div className="p-6 m-4 rounded-md bg-gray-50 hover:bg-gray-100 hover:shadow">
+                  {/* <div className="p-6 m-4 rounded-md bg-gray-50 hover:bg-gray-100 hover:shadow">
                     <div className="grid space-y-3">
                       <div className="text-sm font-bold text-green-500">
                         (£) EUR Only
@@ -482,17 +501,15 @@ export default function Payment() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               )}
             </div>
           </div>
 
           <div className="pt-6">
-            <div className="text-lg font-medium font-mono text-gray-500 uppercase">
-              Billing address
-            </div>
-            <div className="text-sm">
+            <div className="capitalize font-medium">Billing address</div>
+            <div className="text-sm font-light tracking-tight">
               Select the address that matches your card or payment method.
             </div>
           </div>
@@ -510,7 +527,7 @@ export default function Payment() {
                       className="radio text-black"
                     />
                     {/* Flutterwave  */}
-                    <div className="text-sm font-medium">
+                    <div className="text-sm font-medium tracking-tight">
                       <div>Same as shipping address</div>
                     </div>
                   </div>
@@ -526,7 +543,7 @@ export default function Payment() {
                       className="radio text-black"
                     />
                     {/* Flutterwave  */}
-                    <div className="text-sm font-medium">
+                    <div className="text-sm font-medium tracking-tight">
                       <div>Use a different billing address</div>
                     </div>
                   </div>
@@ -538,7 +555,9 @@ export default function Payment() {
           <div className="flex space-x-3 items-center">
             <button className="btn loading">Complete order</button>
             <div className="text-xs font-medium">
-              <span className="text-gray-600">Return to shipping</span>
+              <span className="text-sm font-light tracking-tight">
+                Return to shipping
+              </span>
             </div>
           </div>
         </One>
@@ -556,8 +575,7 @@ export default function Payment() {
                     />
                   </div>
                   <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-1 text-2xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-yellow-600 rounded-full">
-                    {" "}
-                    2{" "}
+                    2
                   </span>
                 </div>
 

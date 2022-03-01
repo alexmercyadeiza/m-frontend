@@ -15,11 +15,13 @@ export default function Information() {
         <One>
           <Breadcrumbs />
 
-          <div className="flex justify-between border-b pb-4">
-            <div className="text-lg font-medium font-mono uppercase">Contact information</div>
-            <div className="text-xs text-gray-600">
+          <div className="flex justify-between items-center border-b pb-4">
+            <div className="capitalize tracking-tight font-bold">
+              Contact information
+            </div>
+            <div className="capitalize text-xs font-light">
               Already have an account?
-              <span className="font-medium pl-2">Log in</span>
+              <span className="font-medium pl-1">Log in</span>
             </div>
           </div>
 
@@ -32,7 +34,7 @@ export default function Information() {
           </div>
 
           <div className="flex justify-between pt-6">
-            <div className="text-lg font-medium font-mono text-gray-500 uppercase">Shipping address</div>
+            <div className="capitalize tracking-tight font-bold">Shipping address</div>
           </div>
 
           <div className="space-y-4">
@@ -88,7 +90,9 @@ export default function Information() {
           <div className="flex space-x-3 items-center">
             <button className="btn loading">Continue to shipping</button>
             <div className="text-xs font-semibold">
-              <span className="text-gray-600">Return to cart</span>
+              <span className="capitalize text-sm font-light">
+                Return to cart
+              </span>
             </div>
           </div>
         </One>

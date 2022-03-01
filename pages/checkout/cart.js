@@ -16,7 +16,7 @@ export default function Cart() {
             <Breadcrumbs />
 
             <div className="border-b pb-4">
-              <div className="text-lg font-medium uppercase font-mono">Cart items</div>
+              <div className="capitalize tracking-tight font-bold">Cart items</div>
             </div>
 
             {/* Product */}
@@ -33,7 +33,7 @@ export default function Cart() {
                   clipRule="evenodd"
                 />
               </svg>
-              <div className="flex items-center justify-between space-x-4 py-2 pl-2 pr-4 bg-gray-100 rounded-xl">
+              <div className="flex items-center justify-between space-x-4 py-2 pl-2 pr-4 border bg-gray-50 rounded-xl">
                 <div className="flex space-x-6 items-center">
                   <div className="flex-shrink-0 w-20 h-20 border border-gray-200 rounded-md overflow-hidden">
                     <img
@@ -43,11 +43,24 @@ export default function Cart() {
                   </div>
 
                   <div className="space-y-1">
-                    <div className="tracking-wide uppercase font-mono text-gray-700">
-                      Hair Gel
-                    </div>
-                    <div className="text-sm">
-                      <span className="font-thin">1</span> &nbsp; x &nbsp; $29.01
+                    <div className="capitalize tracking-tight font-medium">Hair Gel</div>
+                    <div class="flex items-center space-x-3">
+                      <div className="text-sm">1</div>
+
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-3 w-3"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+
+                      <div className="text-sm">$129</div>
                     </div>
                   </div>
                 </div>

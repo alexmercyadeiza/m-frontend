@@ -20,10 +20,14 @@ export default function Shipping() {
               <div className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="text-sm grid grid-flow-col auto-cols-max gap-8 items-center">
-                    <div className="text-gray-500">Contact</div>
-                    <div>pike@gmail.com</div>
+                    <div className="capitalize text-sm font-medium">
+                      Contact
+                    </div>
+                    <div className="text-sm font-light">
+                      pike@gmail.com
+                    </div>
                   </div>
-                  <div className="text-sm font-medium">Change</div>
+                  <div className="capitalize text-sm font-medium">Change</div>
                 </div>
               </div>
             </div>
@@ -31,22 +35,22 @@ export default function Shipping() {
             <div className="p-4">
               <div className="flex items-center justify-between">
                 <div className="text-sm grid grid-flow-col auto-cols-max gap-8 items-center">
-                  <div className="text-gray-500">Ship to</div>
-                  <div>Jahi One, Abuja, 90001 Abuja FCT, NG</div>
+                  <div className="capitalize text-sm font-medium">Ship to</div>
+                  <div className="capitalize text-sm font-light">
+                    Jahi One, Abuja, 90001 Abuja FCT, NG
+                  </div>
                 </div>
-                <div className="text-sm font-medium">Change</div>
+                <div className="capitalize text-sm font-medium">Change</div>
               </div>
             </div>
           </div>
 
           <div className="pt-6">
-            <div className="text-lg font-medium font-mono text-gray-500 uppercase">
-              Shipping method
-            </div>
+            <div className="capitalize font-bold tracking-tight">Shipping method</div>
           </div>
 
           {/* Billing  */}
-          <div className="border rounded-md text-gray-500">
+          <div className="border rounded-md">
             <div className="rounded-b-md">
               {/* Header  */}
               <div className="p-4 border-b rounded-t-md">
@@ -59,11 +63,13 @@ export default function Shipping() {
                       checked
                     />
                     {/* Flutterwave  */}
-                    <div className="text-sm font-medium">
-                      <div>Pick up in store</div>
+                    <div className="text-sm font-medium self-center">
+                      <div className="capitalize text-sm font-medium">
+                        Pick up in store
+                      </div>
                     </div>
                   </div>
-                  <div className="text-sm font-bold">Free</div>
+                  <div className="capitalize text-sm font-light">Free</div>
                 </div>
               </div>
 
@@ -77,11 +83,13 @@ export default function Shipping() {
                       checked
                     />
                     {/* Flutterwave  */}
-                    <div className="text-sm font-medium">
-                      <div>DHL Express</div>
+                    <div className="text-sm font-medium self-center">
+                      <div className="capitalize text-sm font-medium">
+                        DHL Express
+                      </div>
                     </div>
                   </div>
-                  <div className="font-mono">$23.99</div>
+                  <div className="capitalize text-sm font-light">$23.99</div>
                 </div>
               </div>
             </div>
@@ -89,8 +97,10 @@ export default function Shipping() {
 
           <div className="flex space-x-3 items-center">
             <button className="btn loading">Continue to payment</button>
-            <div className="text-xs font-semibold">
-              <span className="text-gray-600">Return to information</span>
+            <div className="text-sm font-semibold">
+              <span className="text-sm font-light">
+                Return to information
+              </span>
             </div>
           </div>
         </One>
@@ -107,7 +117,7 @@ export default function Shipping() {
                       className="w-full h-full object-center object-cover"
                     />
                   </div>
-                  <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-1 text-2xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-yellow-600 rounded-full">
+                  <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-1 text-2sm font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-yellow-600 rounded-full">
                     {" "}
                     2{" "}
                   </span>
@@ -115,7 +125,7 @@ export default function Shipping() {
 
                 <div>
                   <div className="text-sm font-medium">Hair re-growth oil</div>
-                  <div className="text-xs">20mm / Hair food</div>
+                  <div className="text-sm">20mm / Hair food</div>
                 </div>
               </div>
 
