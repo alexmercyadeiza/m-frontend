@@ -1,9 +1,16 @@
-import Like from "./like";
+import Like from "./Like";
 import Image from "next/image";
 
-export default function Product({ name, price, currency, image, addtocart }) {
+export default function Product({
+  name,
+  price,
+  currency,
+  image,
+  addtocart,
+  viewProduct,
+}) {
   return (
-    <div className="group">
+    <div className="cursor-pointer" onClick={viewProduct}>
       <div className="w-full h-52 bg-gray-200 overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
         <img
           src={image}
@@ -15,22 +22,9 @@ export default function Product({ name, price, currency, image, addtocart }) {
         <h3 className="text-sm text-gray-700 tracking-tight capitalize">
           {name}
         </h3>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4 hover:text-gray-700 cursor-pointer text-gray-500"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-          />
-        </svg>
+
+        <p className="text-lg font-medium text-gray-900">{`${currency}${price}`}</p>
       </div>
-      <p className="text-lg font-medium text-gray-900">{`${currency}${price}`}</p>
     </div>
   );
 }

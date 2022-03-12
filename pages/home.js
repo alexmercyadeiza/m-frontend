@@ -3,14 +3,14 @@ import Product from "../components/public/product";
 import { useAppContext } from "../lib/context/global";
 import { products } from "../lib/data";
 import SubHeader from "../components/public/subheader";
-import ShoppingCart from "../components/public/shoppingcart";
 import PublicWrapper from "../components/public/PublicWrapper";
-import Header from '../components/public/Header';
-import Footer from '../components/public/Footer';
-import Wrapper from "../components/public/Grid/Wrapper";
+import Header from "../components/public/Header";
+import Footer from "../components/public/Footer";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [sharedState, updateSharedState] = useAppContext();
+  const router = useRouter();
 
   const addToCart = (product) => {
     updateSharedState({
@@ -20,32 +20,35 @@ export default function Home() {
     });
   };
 
+  const goToProduct = (product) => {
+    router.push({ pathname: "/product", query: { id: product._id } });
+  };
+
   return (
     <>
-      <ShoppingCart />
       <PublicWrapper>
         <Header />
 
-        <div className="mx-auto max-w-screen-2xl w-full">
+        <div className="mx-auto max-w-screen-2xl w-full space-y-16 py-16">
           <SubHeader />
 
-          <div class="grid lg:grid-cols-3 gap-2 h-[40rem]">
+          <div className="grid lg:grid-cols-3 gap-2 h-[40rem]">
             <div
-              class="bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+              className="bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
               style={{
                 backgroundImage: `url('https://images.pexels.com/photos/1994818/pexels-photo-1994818.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)`,
               }}
             >
-              <div class="p-10 text-white space-y-1">
-                <div class="text-3xl tracking-tight font-light">
+              <div className="p-10 text-white space-y-1">
+                <div className="text-3xl tracking-tight font-light">
                   Hair Essentials
                 </div>
-                <div class="items-center flex space-x-1">
-                  <div class="text-xs">SHOP NOW</div>
+                <div className="items-center flex space-x-1">
+                  <div className="text-xs">SHOP NOW</div>
                   <div>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-3 w-3"
+                      className="h-3 w-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -59,23 +62,23 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div class="hidden md:grid gap-2">
+            <div className="hidden md:grid gap-2">
               <div
-                class="bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+                className="bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
                 style={{
                   backgroundImage: `url(https://images.pexels.com/photos/2661255/pexels-photo-2661255.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)`,
                 }}
               >
-                <div class="p-10 text-white space-y-1">
-                  <div class="text-3xl tracking-tight font-light capitalize">
+                <div className="p-10 text-white space-y-1">
+                  <div className="text-3xl tracking-tight font-light capitalize">
                     Tips
                   </div>
-                  <div class="items-center flex space-x-1">
-                    <div class="text-xs uppercase">Learn more</div>
+                  <div className="items-center flex space-x-1">
+                    <div className="text-xs uppercase">Learn more</div>
                     <div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-3 w-3"
+                        className="h-3 w-3"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -90,21 +93,21 @@ export default function Home() {
                 </div>
               </div>
               <div
-                class="bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+                className="bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
                 style={{
                   backgroundImage: `url('https://cdn.pixabay.com/photo/2021/09/23/17/13/shampoo-6650408_960_720.jpg')`,
                 }}
               >
-                <div class="p-10 text-white space-y-1">
-                  <div class="text-3xl tracking-tight font-light">
+                <div className="p-10 text-white space-y-1">
+                  <div className="text-3xl tracking-tight font-light">
                     Hair Basics
                   </div>
-                  <div class="items-center flex space-x-1">
-                    <div class="text-xs">SHOP NOW</div>
+                  <div className="items-center flex space-x-1">
+                    <div className="text-xs">SHOP NOW</div>
                     <div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-3 w-3"
+                        className="h-3 w-3"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -120,19 +123,21 @@ export default function Home() {
               </div>
             </div>
             <div
-              class="bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+              className="bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
               style={{
                 backgroundImage: `url('https://images.pexels.com/photos/5650025/pexels-photo-5650025.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')`,
               }}
             >
-              <div class="p-10 space-y-1">
-                <div class="text-3xl tracking-tight font-light">On Sale</div>
-                <div class="items-center flex space-x-1">
-                  <div class="text-xs">SHOP NOW</div>
+              <div className="p-10 space-y-1">
+                <div className="text-3xl tracking-tight font-light">
+                  On Sale
+                </div>
+                <div className="items-center flex space-x-1">
+                  <div className="text-xs">SHOP NOW</div>
                   <div>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-3 w-3"
+                      className="h-3 w-3"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -148,7 +153,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="w-full py-36">
+          <div className="text-3xl tracking-tight font-light">Top Selling</div>
+
+          <div className="w-full">
             <div className="grid grid-cols-5 gap-14">
               {products.map((product) => (
                 <Product
@@ -159,6 +166,9 @@ export default function Home() {
                   image={product.image}
                   addtocart={() => {
                     addToCart(product);
+                  }}
+                  viewProduct={() => {
+                    goToProduct(product);
                   }}
                 />
               ))}

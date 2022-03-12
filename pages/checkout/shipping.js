@@ -5,8 +5,38 @@ import Breadcrumbs from "../../components/public/Breadcrumbs";
 import Wrapper from "../../components/public/Grid/Wrapper";
 import One from "../../components/public/Grid/One";
 import Two from "../../components/public/Grid/Two";
+import NextButton from "../../components/public/NextButton";
+import ReturnLinks from "../../components/public/ReturnLinks";
+import CheckoutCart from "../../components/public/CheckoutCart";
+import { useAppContext } from "../../lib/context/global";
+import { useState } from "react";
+import { useRouter } from 'next/router';
 
 export default function Shipping() {
+  const router = useRouter();
+
+  const [sharedState, updateSharedState] = useAppContext();
+
+  const [ship, setShip] = useState({
+    email: "",
+    country: "",
+    firstname: "",
+    lastname: "",
+    address: "",
+    city: "",
+    state: "",
+    postal: "",
+    phone: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    updateSharedState({
+      ...sharedState,
+      shipping: { ...sharedState.shipping, [name]: value },
+    });
+  };
+
   return (
     <PublicWrapper>
       <Header />
@@ -24,10 +54,10 @@ export default function Shipping() {
                       Contact
                     </div>
                     <div className="text-sm font-light">
-                      pike@gmail.com
+                      {sharedState.shipping.email}
                     </div>
                   </div>
-                  <div className="capitalize text-sm font-medium">Change</div>
+                  <div onClick={() => {router.push('/checkout/information')}} className="cursor-pointer capitalize text-sm font-medium">Change</div>
                 </div>
               </div>
             </div>
@@ -37,32 +67,32 @@ export default function Shipping() {
                 <div className="text-sm grid grid-flow-col auto-cols-max gap-8 items-center">
                   <div className="capitalize text-sm font-medium">Ship to</div>
                   <div className="capitalize text-sm font-light">
-                    Jahi One, Abuja, 90001 Abuja FCT, NG
+                    {/* Jahi One, Abuja, 90001 Abuja FCT, NG */}
+                    {sharedState.shipping.address}
                   </div>
                 </div>
-                <div className="capitalize text-sm font-medium">Change</div>
+                <div onClick={() => {router.push('/checkout/information')}} className="cursor-pointer capitalize text-sm font-medium">Change</div>
               </div>
             </div>
           </div>
 
           <div className="pt-6">
-            <div className="capitalize font-bold tracking-tight">Shipping method</div>
+            <div className="capitalize font-bold tracking-tight">
+              Shipping method
+            </div>
           </div>
 
           {/* Billing  */}
           <div className="border rounded-md">
             <div className="rounded-b-md">
-              {/* Header  */}
-              <div className="p-4 border-b rounded-t-md">
+              {/* <div className="p-4 border-b rounded-t-md">
                 <div className="flex justify-between items-center">
                   <div className="grid grid-flow-col auto-cols-max gap-8">
                     <input
                       type="radio"
                       name="billing_address"
                       className="radio text-black"
-                      checked
                     />
-                    {/* Flutterwave  */}
                     <div className="text-sm font-medium self-center">
                       <div className="capitalize text-sm font-medium">
                         Pick up in store
@@ -71,7 +101,7 @@ export default function Shipping() {
                   </div>
                   <div className="capitalize text-sm font-light">Free</div>
                 </div>
-              </div>
+              </div> */}
 
               <div className="p-4 rounded-t-md">
                 <div className="flex justify-between items-center">
@@ -80,86 +110,37 @@ export default function Shipping() {
                       type="radio"
                       name="billing_address"
                       className="radio text-black"
-                      checked
+                      value={sharedState.shipping.method}
+                      checked={true}
+                      name="method"
+                      onChange={handleChange}
                     />
-                    {/* Flutterwave  */}
                     <div className="text-sm font-medium self-center">
                       <div className="capitalize text-sm font-medium">
                         DHL Express
                       </div>
                     </div>
                   </div>
-                  <div className="capitalize text-sm font-light">$23.99</div>
+                  <div className="capitalize text-sm font-light">$35</div>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="flex space-x-3 items-center">
-            <button className="btn loading">Continue to payment</button>
-            <div className="text-sm font-semibold">
-              <span className="text-sm font-light">
-                Return to information
-              </span>
-            </div>
+            <NextButton
+              path={"/checkout/payment"}
+              title={"Continue to payment"}
+            />
+            <ReturnLinks
+              path={"/checkout/information"}
+              title={"Return to information"}
+            />
           </div>
         </One>
 
         <Two>
-          <div className="space-y-6">
-            {/* Product  */}
-            <div className="flex items-center justify-between space-x-4">
-              <div className="flex space-x-6 items-center">
-                <div className="rounded-lg hover:bg-stone-200 cursor-pointer p-2 border border-stone-300 relative inline-block">
-                  <div className="flex-shrink-0 w-20 h-20 border border-gray-200 rounded-md overflow-hidden">
-                    <img
-                      src="https://images.pexels.com/photos/3685523/pexels-photo-3685523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                      className="w-full h-full object-center object-cover"
-                    />
-                  </div>
-                  <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-1 text-2sm font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-yellow-600 rounded-full">
-                    {" "}
-                    2{" "}
-                  </span>
-                </div>
-
-                <div>
-                  <div className="text-sm font-medium">Hair re-growth oil</div>
-                  <div className="text-sm">20mm / Hair food</div>
-                </div>
-              </div>
-
-              <div className="font-mono text-lg">$29.01</div>
-            </div>
-
-            <hr />
-
-            {/* Order details  */}
-            <div>
-              <div className="flex justify-between">
-                <div className="text-sm text-gray-600">Subtotal</div>
-                <div className="font-medium font-mono text-lg">$30.01</div>
-              </div>
-
-              <div className="flex justify-between">
-                <div className="text-sm text-gray-600">Shipping</div>
-                <div className="font-medium font-mono text-lg">$30.01</div>
-              </div>
-
-              <div className="flex justify-between">
-                <div className="text-sm text-gray-600">Taxes</div>
-                <div className="font-medium font-mono text-lg">$30.01</div>
-              </div>
-            </div>
-
-            <hr />
-
-            {/* Total  */}
-            <div className="flex justify-between">
-              <div className="text-sm text-gray-600">Total</div>
-              <div className="font-medium font-mono text-xl">$30.01</div>
-            </div>
-          </div>
+          <CheckoutCart />
         </Two>
       </Wrapper>
       <Footer />

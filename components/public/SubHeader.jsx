@@ -1,6 +1,6 @@
 export default function SubHeader() {
   return (
-    <div className="w-full py-10">
+    <div className="w-full">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-1 border px-3 py-2 rounded-xl hover:bg-stone-100 cursor-pointer border-stone-300">
           <div>

@@ -6,8 +6,19 @@ import Wrapper from "../../components/public/Grid/Wrapper";
 import One from "../../components/public/Grid/One";
 import Two from "../../components/public/Grid/Two";
 import Breadcrumbs from "../../components/public/Breadcrumbs";
+import NextButton from "../../components/public/NextButton";
+import ReturnLinks from "../../components/public/ReturnLinks";
+import CheckoutCart from "../../components/public/CheckoutCart";
+import { useRouter } from "next/router";
+import { useAppContext } from "../../lib/context/global";
 
 export default function Payment() {
+  const router = useRouter();
+  const [sharedState, updateSharedState] = useAppContext();
+  const [payment, setPayment] = useState({
+    method: "",
+  });
+
   const [status, setStatus] = useState({
     fw: false,
     st: false,
@@ -18,14 +29,22 @@ export default function Payment() {
   const toggle = (e) => {
     const { name } = e.target;
 
-    if (name === "fw")
+    if (name === "fw") {
       setStatus({ ...status, fw: !status.fw, st: false, ca: false, bt: false });
-    if (name === "st")
+      setPayment({ method: "flutterwave" });
+    }
+    if (name === "st") {
       setStatus({ ...status, st: !status.st, fw: false, ca: false, bt: false });
-    if (name === "ca")
+      setPayment({ method: "stripe" });
+    }
+    if (name === "ca") {
       setStatus({ ...status, ca: !status.ca, st: false, fw: false, bt: false });
-    if (name === "bt")
+      setPayment({ method: "cashapp" });
+    }
+    if (name === "bt") {
       setStatus({ ...status, bt: !status.bt, st: false, ca: false, fw: false });
+      setPayment({ method: "banktransfer" });
+    }
   };
 
   return (
@@ -40,16 +59,27 @@ export default function Payment() {
           <div className="border rounded-md">
             <div className="border-b">
               <div className="p-4">
+                                  <div className="text-2xs">{JSON.stringify(payment)}</div>
+
+
                 <div className="flex items-center justify-between">
+                  
+
                   <div className="text-sm grid grid-flow-col auto-cols-max gap-8 items-center">
                     <div className="text-sm font-medium tracking-tight">
                       Contact
                     </div>
                     <div className="text-sm font-light tracking-tight">
-                      pike@gmail.com
+                      {sharedState.shipping.email}
                     </div>
                   </div>
-                  <div className="text-sm font-normal tracking-tight">
+
+                  <div
+                    onClick={() => {
+                      router.push("/checkout/information");
+                    }}
+                    className="cursor-pointer capitalize text-sm font-medium"
+                  >
                     Change
                   </div>
                 </div>
@@ -64,10 +94,16 @@ export default function Payment() {
                       Ship to
                     </div>
                     <div className="pl-1 text-sm font-light tracking-tight">
-                      Jahi One, Abuja, 90001 Abuja FCT, NG
+                      {sharedState.shipping.address}
                     </div>
                   </div>
-                  <div className="text-sm font-normal tracking-tight">
+
+                  <div
+                    onClick={() => {
+                      router.push("/checkout/information");
+                    }}
+                    className="cursor-pointer capitalize text-sm font-medium"
+                  >
                     Change
                   </div>
                 </div>
@@ -81,10 +117,17 @@ export default function Payment() {
                     Method
                   </div>
                   <div className="text-sm font-light tracking-tight">
-                    Pick up in store &bull; <span>Free</span>
+                    DHL Express
                   </div>
                 </div>
-                <div className="text-sm font-normal tracking-tight">Change</div>
+                <div
+                  onClick={() => {
+                    router.push("/checkout/shipping");
+                  }}
+                  className="cursor-pointer capitalize text-sm font-medium"
+                >
+                  Change
+                </div>
               </div>
             </div>
           </div>
@@ -430,7 +473,7 @@ export default function Payment() {
                               fillRule="evenodd"
                             ></path>
                           </svg>
-                          <div className="text-sm font-medium">Mecury Bank</div>
+                          <div className="text-sm font-medium">Evolve Bank</div>
                         </div>
 
                         <div>
@@ -553,69 +596,17 @@ export default function Payment() {
           </div>
 
           <div className="flex space-x-3 items-center">
-            <button className="btn loading">Complete order</button>
-            <div className="text-xs font-medium">
-              <span className="text-sm font-light tracking-tight">
-                Return to shipping
-              </span>
-            </div>
+            <NextButton path={"/checkout/complete"} title={"Complete order"} />
+
+            <ReturnLinks
+              path={"/checkout/shipping"}
+              title={"Return to shipping"}
+            />
           </div>
         </One>
 
         <Two>
-          <div className="space-y-6">
-            {/* Product  */}
-            <div className="flex items-center justify-between space-x-4">
-              <div className="flex space-x-6 items-center">
-                <div className="rounded-lg hover:bg-stone-200 cursor-pointer p-2 border border-stone-300 relative inline-block">
-                  <div className="flex-shrink-0 w-20 h-20 border border-gray-200 rounded-md overflow-hidden">
-                    <img
-                      src="https://images.pexels.com/photos/3685523/pexels-photo-3685523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                      className="w-full h-full object-center object-cover"
-                    />
-                  </div>
-                  <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-1 text-2xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-yellow-600 rounded-full">
-                    2
-                  </span>
-                </div>
-
-                <div>
-                  <div className="text-sm font-medium">Hair re-growth oil</div>
-                  <div className="text-xs">20mm / Hair food</div>
-                </div>
-              </div>
-
-              <div className="font-mono text-lg">$29.01</div>
-            </div>
-
-            <hr />
-
-            {/* Order details  */}
-            <div>
-              <div className="flex justify-between">
-                <div className="text-sm text-gray-600">Subtotal</div>
-                <div className="font-medium font-mono text-lg">$30.01</div>
-              </div>
-
-              <div className="flex justify-between">
-                <div className="text-sm text-gray-600">Shipping</div>
-                <div className="font-medium font-mono text-lg">$30.01</div>
-              </div>
-
-              <div className="flex justify-between">
-                <div className="text-sm text-gray-600">Taxes</div>
-                <div className="font-medium font-mono text-lg">$30.01</div>
-              </div>
-            </div>
-
-            <hr />
-
-            {/* Total  */}
-            <div className="flex justify-between">
-              <div className="text-sm text-gray-600">Total</div>
-              <div className="font-medium font-mono text-xl">$30.01</div>
-            </div>
-          </div>
+          <CheckoutCart />
         </Two>
       </Wrapper>
       <Footer />
