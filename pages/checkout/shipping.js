@@ -108,7 +108,6 @@ export default function Shipping() {
                   <div className="grid grid-flow-col auto-cols-max gap-8">
                     <input
                       type="radio"
-                      name="billing_address"
                       className="radio text-black"
                       value={sharedState.shipping.method}
                       checked={true}

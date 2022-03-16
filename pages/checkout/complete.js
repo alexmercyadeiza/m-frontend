@@ -66,7 +66,7 @@ export default function Complete() {
               <div className="p-4 space-y-2">
                 <div className="text-lg font-medium">Order updates</div>
                 <div className="text-sm">
-                  You'll get shipping and delivery updates by email.
+                  You will get shipping and delivery updates by email.
                 </div>
               </div>
             </div>

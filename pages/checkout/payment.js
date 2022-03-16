@@ -59,12 +59,9 @@ export default function Payment() {
           <div className="border rounded-md">
             <div className="border-b">
               <div className="p-4">
-                                  {/* <div className="text-2xs">{JSON.stringify(payment)}</div> */}
-
+                {/* <div className="text-2xs">{JSON.stringify(payment)}</div> */}
 
                 <div className="flex items-center justify-between">
-                  
-
                   <div className="text-sm grid grid-flow-col auto-cols-max gap-8 items-center">
                     <div className="text-sm font-medium tracking-tight">
                       Contact
@@ -296,8 +293,10 @@ export default function Payment() {
                     </div>
 
                     <div className="text-sm font-light text-center tracking-tight px-20">
-                      After clicking "Complete order", you will be redirected to
-                      Flutterwave to complete your purchase securely.
+                      After clicking{" "}
+                      <span className="font-medium">Complete order</span>, you
+                      will be redirected to Flutterwave to complete your
+                      purchase securely.
                     </div>
                   </div>
                 </div>
@@ -359,8 +358,10 @@ export default function Payment() {
                     </div>
 
                     <div className="text-sm font-light tracking-tight text-center px-20">
-                      After clicking "Complete order", you will be redirected to
-                      Stripe to complete your purchase securely.
+                      After clicking{" "}
+                      <span className="font-medium">Complete order</span>, you
+                      will be redirected to Stripe to complete your purchase
+                      securely.
                     </div>
                   </div>
                 </div>
@@ -405,7 +406,8 @@ export default function Payment() {
                     <span className="block mb-2 text-sm font-light tracking-tight text-gray-500">
                       Make a transfer of{" "}
                       <span className="font-bold">$234.03</span> to this
-                      $Cashtag and click on "Complete order".
+                      $Cashtag and click on{" "}
+                      <span className="font-medium">Complete order</span>.
                     </span>
                     @MelinaStore
                   </div>
@@ -456,7 +458,8 @@ export default function Payment() {
                 <div>
                   <div className="px-6 pt-4 text-sm font-light tracking-tight">
                     Make a direct transfer to the correct currency account below
-                    and click on "Complete Order".
+                    and click on{" "}
+                    <span className="font-medium">Complete order</span>.
                   </div>
 
                   <div className="p-6 m-4 rounded-md bg-gray-50 hover:bg-gray-100 hover:shadow">

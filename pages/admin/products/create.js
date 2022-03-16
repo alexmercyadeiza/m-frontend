@@ -322,10 +322,10 @@ export default function Create() {
 
               <div className="px-20 space-y-10 pt-10">
                 <div className="text-xs">
-                  You can save this product as a draft if you're not ready to
+                  You can save this product as a draft if you are not ready to
                   publish it yet.{" "}
                   <a href="#" className="link">
-                    View product drafts ->
+                    View product drafts -&gt;
                   </a>
                 </div>
                 <div className="space-x-6">
