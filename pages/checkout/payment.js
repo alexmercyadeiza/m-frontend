@@ -59,7 +59,7 @@ export default function Payment() {
           <div className="border rounded-md">
             <div className="border-b">
               <div className="p-4">
-                                  <div className="text-2xs">{JSON.stringify(payment)}</div>
+                                  {/* <div className="text-2xs">{JSON.stringify(payment)}</div> */}
 
 
                 <div className="flex items-center justify-between">

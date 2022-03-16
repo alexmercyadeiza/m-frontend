@@ -15,7 +15,7 @@ export default function Header() {
       <div className="grid grid-cols-9 w-full mx-auto border-b bg-gray-50">
         <div className="col-span-2 py-7 pl-20 grid">
           <div
-            onClick={() => router.push("/home")}
+            onClick={() => router.push("/")}
             className="font-bold font-mono tracking-widest hover:text-gray-600 cursor-pointer uppercase flex"
           >
             <span>Melina</span>

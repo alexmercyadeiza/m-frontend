@@ -10,7 +10,11 @@ module.exports = {
       mono: ['"Jetbrains Mono"'],
     },
   },
-  plugins: [require("daisyui"), require("@tailwindcss/forms")],
+  plugins: [
+    require("daisyui"),
+    require("@tailwindcss/forms"),
+    require("tw-elements/dist/plugin"),
+  ],
 
   daisyui: {
     themes: false,

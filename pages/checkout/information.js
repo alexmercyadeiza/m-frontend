@@ -40,7 +40,7 @@ export default function Information() {
           </div>
 
           <span className="text-2xs block font-light">
-            {JSON.stringify(sharedState.shipping, null, 4)}
+            {/* {JSON.stringify(sharedState.shipping, null, 4)} */}
           </span>
 
           <div>
