@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Product from "../components/public/product";
+import Product from "../components/public/Product";
 import { useAppContext } from "../lib/context/global";
 import { products } from "../lib/data";
-import SubHeader from "../components/public/subheader";
+import SubHeader from "../components/public/SubHeader";
 import PublicWrapper from "../components/public/PublicWrapper";
 import Header from "../components/public/Header";
 import Footer from "../components/public/Footer";
