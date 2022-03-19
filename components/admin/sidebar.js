@@ -1,23 +1,36 @@
+
+import { useRouter } from 'next/router';
+
 export default function Sidebar() {
+
+  const active = `text-sm border-l-4 cursor-pointer border-yellow-600 font-medium flex items-center space-x-3 text-gray-700 bg-white py-2 px-10`;
+  const inactive = `text-sm border-l-4 cursor-pointer font-medium flex items-center space-x-3 border-white text-gray-700 py-2 px-10`;
+  
+  const router = useRouter();
+
     return (
-      <div className="min-h-screen h-full border-r sticky top-0 space-y-1">
+      <div className="min-h-screen h-full border-r sticky top-0 space-y-1 hidden lg:block">
         <div className="mt-10"></div>
-        <div className="text-sm border-l-4 cursor-pointer border-gray-600 font-medium flex items-center space-x-3 text-gray-700 mr-10 rounded-r-md bg-white py-2 px-10">
+        {/* {JSON.stringify(router.pathname)} */}
+        <div
+          className={router.pathname == "/admin" ? active : inactive}
+          onClick={() => router.push("/admin")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="h-5 w-5 text-yellow-500"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
           </svg>
-          <div className="pt-0.5">Home</div>
+          <div className="pt-0.5">Home </div>
         </div>
 
-        <div className="text-sm border-l-4 cursor-pointer font-medium flex items-center space-x-3 border-white text-gray-700 mr-10 rounded-r-md py-2 px-10">
+        <div className={router.pathname == "/admin/orders" ? active : inactive}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="h-5 w-5 text-yellow-500"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -31,10 +44,18 @@ export default function Sidebar() {
           <div className="pt-0.5">Orders</div>
         </div>
 
-        <div className="text-sm border-l-4 cursor-pointer font-medium flex items-center space-x-3 border-white text-gray-700 mr-10 rounded-r-md py-2 px-10">
+        <div
+          className={
+            router.pathname == "/admin/products" ||
+            router.pathname == "/admin/products/create"
+              ? active
+              : inactive
+          }
+          onClick={() => router.push("/admin/products")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="h-5 w-5 text-yellow-500"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -47,10 +68,12 @@ export default function Sidebar() {
           <div className="pt-0.5">Products</div>
         </div>
 
-        <div className="text-sm border-l-4 cursor-pointer font-medium flex items-center space-x-3 border-white text-gray-700 mr-10 rounded-r-md py-2 px-10">
+        <div
+          className={router.pathname == "/admin/customers" ? active : inactive}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="h-5 w-5 text-yellow-500"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -63,10 +86,12 @@ export default function Sidebar() {
           <div className="pt-0.5">Customers</div>
         </div>
 
-        <div className="text-sm border-l-4 cursor-pointer font-medium flex items-center space-x-3 border-white text-gray-700 mr-10 rounded-r-md py-2 px-10">
+        <div
+          className={router.pathname == "/admin/settings" ? active : inactive}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="h-5 w-5 text-yellow-500"
             viewBox="0 0 20 20"
             fill="currentColor"
           >

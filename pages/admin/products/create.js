@@ -1,9 +1,64 @@
-import Layout from "../../../components/admin/Layout";
-import Header from "../../../components/admin/Header";
+import Layout from "../../../components/admin/layout";
+import Header from "../../../components/admin/header";
 import { useState } from "react";
+import { useRouter } from 'next/router';
+import ProductHeader from '../../../components/admin/product/header';
+import Colors from '../../../components/admin/product/colors';
+import CurrencyInput from "react-currency-input-field";
 
 export default function Create() {
   const [images, setImages] = useState([]);
+  const [product, setProduct] = useState({
+    name: '',
+    price: 0,
+    weight: '',
+    howtouse: '',
+    ingredients: '',
+    colors: [],
+    description: '',
+    length: [],
+    frontal: {
+      status: false,
+      type: {
+        size: '',
+        price: 0,
+      }
+    }
+  })
+
+  const [type, setType] = useState({});
+
+  const [length, setLength] = useState({
+    length: '',
+    price: 0,
+  });
+
+  const [toggleColor, setToggleColor] = useState(false);
+
+  /**
+   * Handle Form Changes
+   */
+  const handleProductInfo = (e) => {
+    const {name, value} = e.target;
+    setProduct({...product, [name]: value});
+  }
+
+  const handleLength = (e) => {
+    const {name, value} = e.target;
+    setLength({...length, [name]: value });
+  }
+
+  const addLength = () => {
+    setProduct({...product, length: [...product.length, length]});
+    setLength({ width: '', length: '' });
+  }
+
+  const handleColor = (e) => {
+    const {name, value} = e.target;
+    setProduct({...product, colors: [...product.colors, ]});
+  }
+
+  const router = useRouter();
 
   const handleImages = (e) => {
     const { name, value, files } = e.target;
@@ -19,26 +74,35 @@ export default function Create() {
   };
 
   const removeImage = (i) => {
-      const filter = images.filter(image => image != i);
-      setImages(filter);
-  }
+    const filter = images.filter((image) => image != i);
+    setImages(filter);
+  };
 
   return (
     <>
       <Header />
       <Layout>
-        <div className="min-h-screen h-full col-span-4 bg-white">
-          <div className="grid grid-cols-3">
-            <div className="col-span-2 mb-40 space-y-10 border-r">
-              <div className="col-span-3 px-20 text-xl pt-10">
-                Add a product
+        <div className="min-h-screen h-full col-span-4 mb-10 bg-white">
+          <div className="grid md:grid-cols-3">
+            <ProductHeader />
+
+            <div className="col-span-2 lg:mb-40 pt-10 pb-20 space-y-10 lg:border-r border-gray-100">
+              <div className="text-2xs">
+                {" "}
+                {JSON.stringify(product, null, 4)}
+              </div>
+              <div className="text-2xs"> {JSON.stringify(length, null, 4)}</div>
+
+              <div className="text-2xs">
+                {" "}
+                {JSON.stringify(product.colors, null, 4)}
               </div>
 
-              {/* <div className="text-2xs px-20">
-                {JSON.stringify(images, null, 4)}
-              </div> */}
+              <div className="col-span-3 px-10 tracking-tight text-2xl">
+                Create a new product
+              </div>
 
-              <div className="grid grid-cols-3 px-20 gap-8">
+              <div className="grid md:grid-cols-3 px-10 gap-8">
                 <div className="space-y-2 text-sm">
                   <div className="font-medium">Name</div>
                   <div className="flex items-center px-4 rounded-md border">
@@ -58,6 +122,8 @@ export default function Create() {
                     </div>
                     <input
                       type="text"
+                      name="name"
+                      onChange={handleProductInfo}
                       className="block w-full focus:border-b text-sm border-none focus:border-none focus:ring-0"
                       placeholder=""
                     />
@@ -74,10 +140,18 @@ export default function Create() {
                         <option>EUR</option>
                       </select>
                     </div>
-                    <input
+                    {/* <input
                       type="text"
+                      name="price"
+                      onChange={handleProductInfo}
                       className="block w-full focus:border-b text-sm border-none focus:border-none focus:ring-0"
                       placeholder=""
+                    /> */}
+                    <CurrencyInput
+                      name="price"
+                      className="block w-full focus:border-b text-sm border-none focus:border-none focus:ring-0"
+                      decimalsLimit={2}
+                      onChange={handleProductInfo}
                     />
                   </div>
                 </div>
@@ -95,30 +169,43 @@ export default function Create() {
                         <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 100 4v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2a2 2 0 100-4V6z" />
                       </svg>
                     </div>
-                    <input
+                    {/* <input
                       type="text"
+                      name="weight"
+                      onChange={handleProductInfo}
                       className="block w-full focus:border-b text-sm border-none focus:border-none focus:ring-0"
                       placeholder=""
+                    /> */}
+                    <CurrencyInput
+                      name="weight"
+                      className="block w-full focus:border-b text-sm border-none focus:border-none focus:ring-0"
+                      decimalsLimit={2}
+                      onChange={handleProductInfo}
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="px-20 grid grid-cols-3 gap-8">
+              <div className="px-10 grid md:grid-cols-3 gap-8">
                 <textarea
-                  className="mt-1 block w-full rounded-md border-gray-200 border text-sm focus:border-gray-300 focus:bg-white focus:ring-0"
+                  className="mt-1 col-span-2 lg:col-span-1 block w-full rounded-md border-gray-200 border text-sm focus:border-gray-300 focus:bg-white focus:ring-0"
                   rows="3"
+                  name="howtouse"
+                  onChange={handleProductInfo}
                   placeholder="How to use"
                 ></textarea>
                 <textarea
-                  className="mt-1 block w-full rounded-md border-gray-200 border text-sm focus:border-gray-300 focus:bg-white focus:ring-0"
+                  className="mt-1 col-span-2 lg:col-span-1 block w-full rounded-md border-gray-200 border text-sm focus:border-gray-300 focus:bg-white focus:ring-0"
                   rows="3"
+                  name="ingredients"
+                  onChange={handleProductInfo}
                   placeholder="Ingredients"
                 ></textarea>
                 <div className="relative inline-block text-left">
                   <div>
                     <button
                       type="button"
+                      onClick={() => setToggleColor(!toggleColor)}
                       className="inline-flex rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-0 focus:ring-indigo-500"
                       id="menu-button"
                       aria-expanded="true"
@@ -141,54 +228,50 @@ export default function Create() {
                     </button>
                   </div>
 
-                  {/* <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-              <div className="py-1" role="none">
-                <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
-                <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
-                <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
-                <form method="POST" action="#" role="none">
-                  <button type="submit" className="text-gray-700 block w-full text-left px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
-                </form>
-              </div>
-            </div> */}
+                  {toggleColor && <Colors />}
                 </div>
                 <textarea
                   className="col-span-2 block w-full rounded-md border-gray-200 border text-sm focus:border-gray-300 focus:bg-white focus:ring-0"
                   rows="3"
+                  name="description"
+                  onChange={handleProductInfo}
                   placeholder="Description"
                 ></textarea>
               </div>
 
-              <div className="px-20 grid grid-cols-3 gap-8">
+              <div className="px-10 grid md:grid-cols-3 gap-8">
                 <div className="space-y-2 text-sm">
                   <div className="font-medium">Custom Length & Price</div>
                   <div className="flex items-center pl-4 pr-0.5 rounded-md border">
                     <div className="text-sm border-r pr-3 border-gray-200 font-bold">
                       L
                     </div>
-                    <input
-                      type="text"
+                    <CurrencyInput
+                      name="length"
                       className="block w-full focus:border-b text-sm border-none focus:border-none focus:ring-0"
-                      placeholder=""
+                      decimalsLimit={2}
+                      onChange={handleLength}
                     />
                     <div className="text-sm border-r pr-3 border-gray-200 font-bold">
                       $
                     </div>
-                    <input
-                      type="text"
+                    <CurrencyInput
+                      name="price"
                       className="block w-full focus:border-b text-sm border-none focus:border-none focus:ring-0"
-                      placeholder=""
+                      decimalsLimit={2}
+                      onChange={handleLength}
                     />
                     <button className="btn btn-sm btn-outline border-none">
                       add
                     </button>
                   </div>
+                 <Error error={'Provide the length and price.'} />
                 </div>
               </div>
 
               <hr />
 
-              <div className="px-20 grid auto-cols-max gap-8">
+              <div className="px-10 grid grid-flow-col auto-cols-max gap-8">
                 <div className="text-sm flex space-x-6 items-center">
                   <div className="font-medium">Frontal</div>
                   <input
@@ -223,7 +306,7 @@ export default function Create() {
                     </div>
                     <input
                       type="text"
-                      className="block w-full focus:border-b text-sm border-none focus:border-none focus:ring-0"
+                      className="block w-full focus:border-b rounded-r-md text-sm border-none focus:border-none focus:ring-0"
                       placeholder=""
                     />
                   </div>
@@ -232,7 +315,7 @@ export default function Create() {
 
               <hr />
 
-              <div className="px-20 grid auto-cols-max gap-8">
+              <div className="px-10 grid grid-flow-col auto-cols-max gap-8">
                 <div className="text-sm flex space-x-6 items-center">
                   <div className="font-medium">Closure</div>
                   <input
@@ -248,7 +331,7 @@ export default function Create() {
                     </div>
                     <input
                       type="text"
-                      className="block w-full focus:border-b text-sm border-none focus:border-none focus:ring-0"
+                      className="block w-full focus:border-b text-sm border-none rounded-r-md focus:border-none focus:ring-0"
                       placeholder=""
                     />
                   </div>
@@ -256,55 +339,38 @@ export default function Create() {
               </div>
             </div>
 
-            <div className="space-y-5">
-              <div className="col-span-3 px-20 font-medium pt-10">
+            <div class="space-y-5 mx-10">
+              <div class="col-span-3 font-medium pt-10">
                 Upload Product Image
               </div>
-              <div className="grid auto-cols-max px-20">
-                <div className="flex justify-center">
-                  <div className="mb-3 w-96">
-                    <input
-                      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:ring-0 focus:bg-white focus:border-gray-600 focus:outline-none"
-                      type="file"
-                      id="formFileMultiple"
-                      name="images"
-                      onChange={handleImages}
-                      multiple
-                    />
-                  </div>
+              <div class="grid auto-cols-max">
+                <div class="mb-3 w-3/4">
+                  <input
+                    class="form-control text-sm block w-full px-3 py-1.5 font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:ring-0 focus:bg-white focus:border-gray-600 focus:outline-none"
+                    type="file"
+                    id="formFileMultiple"
+                    name="images"
+                    onChange={handleImages}
+                    multiple
+                  />
                 </div>
               </div>
 
-              {/* <fieldset className="w-full space-y-1 dark:text-coolGray-100">
-                <label for="files" className="block text-sm font-medium">
-                  Attachments
-                </label>
-                <div className="flex">
-                  <input
-                    type="file"
-                    name="files"
-                    id="files"
-                    multiple={true}
-                    className="px-8 py-12 border-2 border-dashed rounded-md dark:border-coolGray-700 dark:text-coolGray-400 dark:bg-coolGray-800"
-                  />
-                </div>
-              </fieldset> */}
-
-              <div className="px-20 w-full">
-                <div className="grid grid-cols-3 gap-3">
+              <div class="w-full">
+                <div class="grid grid-cols-3 gap-3">
                   {images.map((image) => (
                     <div
                       key={image}
                       onClick={() => {
                         removeImage(image);
                       }}
-                      className="relative w-24 h-24 border-gray-100 shadow-sm border bg-cover bg-center rounded-md"
+                      class="relative w-24 h-24 border-gray-100 hover:shadow-lg border bg-cover bg-center rounded-md"
                       style={{ backgroundImage: `url(${image})` }}
                     >
-                      <div className="absolute top-0 right-0 p-1 m-1 rounded-full hover:bg-red-200">
+                      <div class="absolute top-0 right-0 p-1 m-1 rounded-full hover:bg-red-200">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-3 w-3"
+                          class="h-3 w-3"
                           viewBox="0 0 20 20"
                           fill="currentColor"
                         >
@@ -320,21 +386,20 @@ export default function Create() {
                 </div>
               </div>
 
-              <div className="px-20 space-y-10 pt-10">
-                <div className="text-xs">
+              <div class="space-y-10 pt-10">
+                <div class="text-xs">
                   You can save this product as a draft if you are not ready to
                   publish it yet.{" "}
-                  <a href="#" className="link">
+                  <a
+                    onClick={() => router.push("/admin/products")}
+                    class="link"
+                  >
                     View product drafts -&gt;
                   </a>
                 </div>
-                <div className="space-x-6">
-                  <button className="btn btn-sm btn-outline">
-                    save as draft
-                  </button>
-                  <button className="btn btn-sm btn-success">
-                    publish product
-                  </button>
+                <div class="space-y-4 lg:space-x-4">
+                  <button class="btn btn-sm btn-outline">save as draft</button>
+                  <button class="btn btn-sm btn-success">publish</button>
                 </div>
               </div>
             </div>
