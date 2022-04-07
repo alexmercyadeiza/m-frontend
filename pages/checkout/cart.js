@@ -14,9 +14,6 @@ import CheckoutCart from '../../components/public/CheckoutCart';
 export default function Cart() {
   const router = useRouter();
 
-  const [product, setProduct] = useState({});
-  const [qty, setQty] = useState(0);
-
   const goToProduct = (product) => {
     router.push({ pathname: "/product", query: { id: product._id } });
   };
@@ -26,55 +23,6 @@ export default function Cart() {
   }, []);
 
   const [sharedState, updateSharedState] = useAppContext();
-
-  const removeItem = () => {};
-
-  const incrementItem = (id) => {
-    const arrProd = sharedState.cartItems.filter(
-      (product) => product._id != id
-    );
-
-    console.log(arrProd);
-
-    // let product = arrProd[0];
-
-    // product = { ...product, quantity: product.quantity++ };
-
-    // console.log(product);
-
-    // setProduct(...product, quantity: qty);
-
-    // // remove the item
-    // const filtered = sharedState.cartItems.filter(
-    //   (product) => parseInt(product._id) != id
-    // );
-
-    // add the product to all other existing products
-    // const newFiltered = [...filtered, product];
-
-    // update cartItems
-    // updateSharedState({
-    //   ...sharedState,
-    //   cartItems: newFiltered,
-    // });
-
-    // updateSharedState({
-    //   ...sharedState,
-    //   cartItems: [...sharedState.cartItems],
-    // });
-  };
-
-  const decrementItem = (id) => {
-    // setProduct(sharedState.cartItems.filter((product) => product._id != id));
-    // console.log(product);
-    // const filteredProduct = sharedState.cartItems.filter((product) =>
-    //   setProduct(product)
-    // );
-    // updateSharedState({
-    //   ...sharedState,
-    //   cartItems: [...sharedState.cartItems],
-    // });
-  };
 
   return (
     <PublicWrapper>
@@ -192,8 +140,14 @@ export default function Cart() {
             </div>
           ))}
 
+          {sharedState.cartItems.length === 0 &&
+            <div className="text-gray-400">
+              No items in cart.
+            </div>
+          }
+
           <div className="flex space-x-3 pt-10 items-center">
-            <NextButton path={'/checkout/information'} title={'Continue'} />
+            <NextButton path={'/checkout/information'} status={sharedState.cartItems.length === 0 ? true : false} title={'Continue'} />
           </div>
         </One>
 

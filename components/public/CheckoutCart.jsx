@@ -18,6 +18,11 @@ export default function CheckoutCart() {
     const rate = (5 / 100) * total;
     setTaxes(rate);
 
+    updateSharedState({
+      ...sharedState,
+      total_price: total + rate + shipping,
+    });
+
   }, [sharedState.cartItems, total]);
 
   return (
@@ -25,16 +30,16 @@ export default function CheckoutCart() {
       {sharedState.cartItems.map((product) => (
         <div key={product._id} className="flex items-center justify-between space-x-4">
           <div className="flex space-x-6 items-center">
-            <div className="rounded-lg hover:bg-stone-200 cursor-pointer p-2 border border-stone-300 relative inline-block">
+            <div className="rounded-lg hover:bg-stone-100 cursor-pointer p-2 relative inline-block">
               <div className="flex-shrink-0 w-20 h-20 border border-gray-200 rounded-md overflow-hidden">
                 <img
                   src={product.image}
                   className="w-full h-full object-center object-cover"
                 />
               </div>
-              <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-1 text-2xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-yellow-600 rounded-full">
+              {/* <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-1 text-2xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-yellow-600 rounded-full">
                 {product.quantity}
-              </span>
+              </span> */}
             </div>
 
             <div className="space-y-1"> 
@@ -81,7 +86,7 @@ export default function CheckoutCart() {
         <div className="flex justify-between">
           <div className="text-sm text-gray-600">Taxes</div>
           <div className="font-medium font-mono text-lg">
-            ${Math.ceil(taxes, 2)}
+            ${parseFloat(taxes).toFixed(2)}
           </div>
         </div>
       </div>

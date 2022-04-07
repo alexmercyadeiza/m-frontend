@@ -1,15 +1,20 @@
 import { useRouter } from "next/router";
+import { useAppContext } from "../../lib/context/global";
 
 export default function Breadcrumbs() {
+  // const [sharedState, updateSharedState] = useAppContext();
   const router = useRouter();
   const inActive = `text-gray-400`;
+
+  // const status = sharedState.cartItems.length === 0 ? false : true;
+
   return (
     <div className="text-2xs breadcrumbs">
       <ul>
         <li
-          onClick={() => {
-            router.push("/checkout/cart");
-          }}
+          // onClick={() => {
+          //   router.push("/checkout/cart");
+          // }}
         >
           <a className={router.pathname === "/checkout/cart" ? "" : inActive}>
             <svg
@@ -30,9 +35,9 @@ export default function Breadcrumbs() {
           </a>
         </li>
         <li
-          onClick={() => {
-            router.push("/checkout/information");
-          }}
+          // onClick={() => {
+          //   router.push("/checkout/information");
+          // }}
         >
           <a className={router.pathname === "/checkout/information" ? "" : inActive}>
             <svg
@@ -54,9 +59,9 @@ export default function Breadcrumbs() {
         </li>
 
         <li
-          onClick={() => {
-            router.push("/checkout/shipping");
-          }}
+          // onClick={() => {
+          //   router.push("/checkout/shipping");
+          // }}
         >
           <a className={router.pathname === "/checkout/shipping" ? "" : inActive}>
             <svg
@@ -78,9 +83,9 @@ export default function Breadcrumbs() {
         </li>
 
         <li
-          onClick={() => {
-            router.push("/checkout/payment");
-          }}
+          // onClick={() => {
+          //   router.push("/checkout/payment");
+          // }}
         >
           <a className={router.pathname === "/checkout/payment" ? "" : inActive}>
             <svg

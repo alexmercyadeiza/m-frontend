@@ -6,8 +6,13 @@ import One from "../../components/public/Grid/One";
 import Two from '../../components/public/Grid/Two';
 import NextButton from "../../components/public/NextButton";
 import CheckoutCart from "../../components/public/CheckoutCart";
+import { useAppContext } from "../../lib/context/global";
 
 export default function Complete() {
+
+  const [sharedState, updateSharedState] = useAppContext();
+  const {id, email, address, city, state, postal, payment, method} = sharedState.shipping;
+
   return (
     <PublicWrapper>
       <Header />
@@ -33,7 +38,7 @@ export default function Complete() {
 
           <div className="space-y-6 col-span-4">
             <div className="tracking-tight items-center">
-              <div className="text-sm text-gray-500">Order #011</div>
+              <div className="text-sm text-gray-500">Order #{sharedState.shipping.id}</div>
               <div>Thank you!</div>
               <div className="text-2xl">Print Something</div>
             </div>
@@ -41,10 +46,10 @@ export default function Complete() {
             <div className="border rounded-md text-gray-500">
               <div className="p-4 space-y-2">
                 <div className="text-lg font-medium">Your order is confirmed</div>
-                <div className="text-sm">
+                {/* <div className="text-sm">
                   Our customer service representative will contact you now to
                   get more details about your order.
-                </div>
+                </div> */}
                 <div className="text-sm">
                   Thanks for shopping with Melina Beauty &amp; Digitals.
                 </div>
@@ -85,30 +90,30 @@ export default function Complete() {
                     <div className="space-y-1">
                       <div className="text-xs font-medium">Shipping address</div>
                       <div className="text-xs font-light">
-                        Pike County, Santa Monica, 21000, Salt Lake, SF, CA
+                        {`${address}, ${city}, ${state}`}
                       </div>
                     </div>
 
                     <div className="space-y-1">
                       <div className="text-xs font-medium">Shipping method</div>
-                      <div className="text-xs font-light">Express delivery</div>
+                      <div className="text-xs font-light">{method}</div>
                     </div>
                   </div>
 
                   <div className="space-y-5">
                     <div className="space-y-1">
                       <div className="text-xs font-medium">Payment method</div>
-                      <div className="text-xs font-light">
-                        Pike County, Santa Monica, 21000, Salt Lake, SF, CA
+                      <div className="text-xs font-light uppercase">
+                        {payment}
                       </div>
                     </div>
 
-                    <div className="space-y-1">
+                    {/* <div className="space-y-1">
                       <div className="text-xs font-medium">Billing address</div>
                       <div className="text-xs font-light">
                         Pike County, Santa Monica, 21000, Salt Lake, SF, CA
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

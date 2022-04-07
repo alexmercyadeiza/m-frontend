@@ -1,16 +1,21 @@
-export default function Colors() {
-    return (
+
+export default function Colors({ setColor, colors, open }) {
+  return (
+    
       <div
         className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="menu-button"
-        tabindex="-1"
+        tabIndex="-1"
       >
         <div className="py-1" role="none">
           <div className="px-4 py-2 flex space-x-2 items-center">
             <input
               type="checkbox"
+              name="c1"
+              checked={colors.c1}
+              onChange={setColor}
               className="rounded-md p-2 bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-0 focus:ring-gray-100"
             />
             <div className="grid">
@@ -22,6 +27,9 @@ export default function Colors() {
           <div className="px-4 py-2 flex space-x-2 items-center">
             <input
               type="checkbox"
+              name="c2"
+              checked={colors.c2}
+              onChange={setColor}
               className="rounded-md p-2 bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-0 focus:ring-gray-100"
             />
             <div className="grid">
@@ -33,6 +41,9 @@ export default function Colors() {
           <div className="px-4 py-2 flex space-x-2 items-center">
             <input
               type="checkbox"
+              name="c3"
+              checked={colors.c3}
+              onChange={setColor}
               className="rounded-md p-2 bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-0 focus:ring-gray-100"
             />
             <div className="grid">
@@ -44,6 +55,9 @@ export default function Colors() {
           <div className="px-4 py-2 flex space-x-2 items-center">
             <input
               type="checkbox"
+              name="c4"
+              checked={colors.c4}
+              onChange={setColor}
               className="rounded-md p-2 bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-0 focus:ring-gray-100"
             />
             <div className="grid">
@@ -55,6 +69,9 @@ export default function Colors() {
           <div className="px-4 py-2 flex space-x-2 items-center">
             <input
               type="checkbox"
+              name="c5"
+              checked={colors.c5}
+              onChange={setColor}
               className="rounded-md p-2 bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-0 focus:ring-gray-100"
             />
             <div className="grid">
@@ -66,6 +83,9 @@ export default function Colors() {
           <div className="px-4 py-2 flex space-x-2 items-center">
             <input
               type="checkbox"
+              name="c6"
+              checked={colors.c6}
+              onChange={setColor}
               className="rounded-md p-2 bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-0 focus:ring-gray-100"
             />
             <div className="grid">
@@ -77,6 +97,9 @@ export default function Colors() {
           <div className="px-4 py-2 flex space-x-2 items-center">
             <input
               type="checkbox"
+              name="c7"
+              checked={colors.c7}
+              onChange={setColor}
               className="rounded-md p-2 bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-0 focus:ring-gray-100"
             />
             <div className="grid">
@@ -87,6 +110,9 @@ export default function Colors() {
           <div className="px-4 py-2 flex space-x-2 items-center">
             <input
               type="checkbox"
+              name="c8"
+              checked={colors.c8}
+              onChange={setColor}
               className="rounded-md p-2 bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-0 focus:ring-gray-100"
             />
             <div className="grid">
@@ -98,6 +124,9 @@ export default function Colors() {
           <div className="px-4 py-2 flex space-x-2 items-center">
             <input
               type="checkbox"
+              name="c9"
+              checked={colors.c9}
+              onChange={setColor}
               className="rounded-md p-2 bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-0 focus:ring-gray-100"
             />
             <div className="grid">
@@ -109,6 +138,9 @@ export default function Colors() {
           <div className="px-4 py-2 flex space-x-2 items-center">
             <input
               type="checkbox"
+              name="c10"
+              checked={colors.c10}
+              onChange={setColor}
               className="rounded-md p-2 bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-0 focus:ring-gray-100"
             />
             <div className="grid">
@@ -120,6 +152,9 @@ export default function Colors() {
           <div className="px-4 py-2 flex space-x-2 items-center">
             <input
               type="checkbox"
+              name="c11"
+              checked={colors.c11}
+              onChange={setColor}
               className="rounded-md p-2 bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-0 focus:ring-gray-100"
             />
             <div className="grid">
@@ -131,6 +166,9 @@ export default function Colors() {
           <div className="px-4 py-2 flex space-x-2 items-center">
             <input
               type="checkbox"
+              name="c12"
+              checked={colors.c12}
+              onChange={setColor}
               className="rounded-md p-2 bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 text-gray-700 focus:ring-0 focus:ring-gray-100"
             />
             <div className="grid">
@@ -140,5 +178,5 @@ export default function Colors() {
           </div>
         </div>
       </div>
-    );
+  );
 }

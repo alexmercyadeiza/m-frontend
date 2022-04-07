@@ -10,7 +10,7 @@ const router = useRouter();
         }}
         className="cursor-pointer hover:text-gray-700 text-xs font-semibold"
       >
-        <span className="capitalize text-sm font-light">{title}</span>
+        <span className="capitalize text-sm font-medium tracking-tight">{title}</span>
       </div>
     );
 }

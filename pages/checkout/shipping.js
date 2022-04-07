@@ -17,17 +17,17 @@ export default function Shipping() {
 
   const [sharedState, updateSharedState] = useAppContext();
 
-  const [ship, setShip] = useState({
-    email: "",
-    country: "",
-    firstname: "",
-    lastname: "",
-    address: "",
-    city: "",
-    state: "",
-    postal: "",
-    phone: "",
-  });
+  // const [ship, setShip] = useState({
+  //   email: "",
+  //   country: "",
+  //   firstname: "",
+  //   lastname: "",
+  //   address: "",
+  //   city: "",
+  //   state: "",
+  //   postal: "",
+  //   phone: "",
+  // });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
