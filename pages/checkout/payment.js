@@ -17,6 +17,7 @@ import Card from "../../components/icons/card";
 import CashApp from "../../components/public/Modals/CashApp";
 import BankTransfer from "../../components/public/Modals/BankTransfer";
 import { createOrder } from "../../lib/api";
+import TopHeader from '../../components/public/TopHeader';
 
 export default function Payment() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function Payment() {
   const [openCA, setOpenCA] = useState(false);
   const [openBT, setOpenBT] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [statx, setStatx] = useState('');
+  const [statx, setStatx] = useState("");
 
   const [payment, setPayment] = useState({
     method: "",
@@ -65,11 +66,11 @@ export default function Payment() {
     if (method === "flutterwave") {
       setLoading(true);
       const res = await createOrder(order);
-      if (res.status === 'success') {
-          setLoading(false);
-        router.push(res.link);
-        };
-      
+      if (res.status === "success") {
+        setLoading(false);
+        // console.log(res.link);
+        router.push({pathname: res.link});
+      }
     }
 
     if (method === "stripe") {
@@ -106,6 +107,8 @@ export default function Payment() {
 
   return (
     <>
+      <TopHeader title={"Payment"} />
+
       <PublicWrapper>
         <Header />
         <Wrapper>
@@ -117,7 +120,7 @@ export default function Payment() {
             <div className="border rounded-md">
               <div className="border-b">
                 <div className="p-4">
-                  <div className="text-2xs">
+                  {/* <div className="text-2xs">
                     {JSON.stringify(sharedState.shipping)}
                     {JSON.stringify(sharedState.cartItems)}
                     {JSON.stringify(sharedState.total_price)}
@@ -125,7 +128,7 @@ export default function Payment() {
                     <br />
                     <br />
                     {JSON.stringify(loading)}
-                  </div>
+                  </div> */}
 
                   <div className="flex items-center justify-between">
                     <div className="text-sm grid grid-flow-col auto-cols-max gap-8 items-center">
@@ -195,8 +198,10 @@ export default function Payment() {
               </div>
             </div>
 
-            <div className="pt-6">
-              <div className="capitalize font-medium">Payment</div>
+            <div className="pt-6 space-y-2">
+              <div className="text-sm font-medium uppercase tracking-widest">
+                Payment
+              </div>
               <div className="text-sm font-light tracking-tight">
                 All transactions are secure and encrypted.
               </div>
@@ -248,7 +253,7 @@ export default function Payment() {
 
                       <div className="text-sm font-light text-center tracking-tight px-20">
                         After clicking{" "}
-                        <span className="font-medium">Complete order</span>, you
+                        <span className="font-medium">complete order</span>, you
                         will be redirected to Flutterwave to complete your
                         purchase securely.
                       </div>
@@ -303,7 +308,7 @@ export default function Payment() {
 
                       <div className="text-sm font-light tracking-tight text-center px-20">
                         After clicking{" "}
-                        <span className="font-medium">Complete order</span>, you
+                        <span className="font-medium">complete order</span>, you
                         will be redirected to Stripe to complete your purchase
                         securely.
                       </div>
@@ -351,7 +356,7 @@ export default function Payment() {
                         Make a transfer of{" "}
                         <span className="font-bold">$234.03</span> to this
                         $Cashtag and click on{" "}
-                        <span className="font-medium">Complete order</span>.
+                        <span className="font-medium">complete order</span>.
                       </span>
                       @MelinaStore
                     </div>
@@ -395,7 +400,7 @@ export default function Payment() {
                   </div>
                 </div>
 
-                {/* Bank Transfer Body 
+                {/* Bank Transfer Body
                USD  */}
 
                 {status.bt && (
@@ -403,7 +408,7 @@ export default function Payment() {
                     <div className="px-6 pt-4 text-sm font-light tracking-tight">
                       Make a direct transfer to the correct currency account
                       below and click on{" "}
-                      <span className="font-medium">Complete order</span>.
+                      <span className="font-medium">complete order</span>.
                     </div>
 
                     <div className="p-6 m-4 rounded-md bg-gray-50 hover:bg-gray-100 hover:shadow">

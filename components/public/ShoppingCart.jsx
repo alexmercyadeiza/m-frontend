@@ -16,8 +16,8 @@ export default function ShoppingCart() {
     updateSharedState({ ...sharedState, cartStatus: false });
   };
 
-  const removeProduct = (_id, price) => {
-    const cartItems = sharedState.cartItems.filter((item) => item._id != _id);
+  const removeProduct = (id, price) => {
+    const cartItems = sharedState.cartItems.filter((item) => item.info.id != id);
     updateSharedState({
       ...sharedState,
       cartItems,
@@ -28,7 +28,7 @@ export default function ShoppingCart() {
   useEffect(() => {
     let a = 0;
     sharedState.cartItems.map((product) => {
-      a = a + (product.price * product.quantity);
+      a = a + (product.info.price * product.quantity);
     });
     setTotal(a);
     // console.log(total);
@@ -89,11 +89,11 @@ export default function ShoppingCart() {
                             className="-my-6 divide-y divide-gray-200"
                           >
                             {sharedState.cartItems.map((product) => (
-                              <li key={product._id} className="py-6 flex">
+                              <li key={product.info.id} className="py-6 flex">
                                 <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
                                   <img
-                                    src={product.image}
-                                    alt={product.name}
+                                    src={product.images[0]}
+                                    alt={product.info.name}
                                     className="w-full h-full object-center object-cover"
                                   />
                                 </div>
@@ -101,9 +101,9 @@ export default function ShoppingCart() {
                                 <div className="ml-4 flex-1 flex flex-col">
                                   <div>
                                     <div className="flex capitalize justify-between text-base tracking-tight font-medium text-gray-900">
-                                      <h3>{product.name}</h3>
+                                      <h3>{product.info.name}</h3>
                                       <p className="ml-4 font-mono">
-                                        ${product.price * product.quantity}
+                                        ${product.info.price * product.quantity}
                                       </p>
                                     </div>
 
@@ -121,8 +121,8 @@ export default function ShoppingCart() {
                                       <div
                                         onClick={() => {
                                           removeProduct(
-                                            product._id,
-                                            product.price
+                                            product.info.id,
+                                            product.info.price
                                           );
                                         }}
                                         className="cursor-pointer font-medium text-2xs text-yellow-600 hover:text-yellow-500"

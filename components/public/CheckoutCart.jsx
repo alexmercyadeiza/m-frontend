@@ -10,7 +10,7 @@ export default function CheckoutCart() {
   useEffect(() => {
     let a = 0;
     sharedState.cartItems.map((product) => {
-      a = a + product.price * product.quantity;
+      a = a + product.info.price * product.quantity;
     });
     setTotal(a);
 
@@ -28,12 +28,12 @@ export default function CheckoutCart() {
   return (
     <div className="space-y-6">
       {sharedState.cartItems.map((product) => (
-        <div key={product._id} className="flex items-center justify-between space-x-4">
+        <div key={product.info.id} className="flex items-center justify-between space-x-4">
           <div className="flex space-x-6 items-center">
             <div className="rounded-lg hover:bg-stone-100 cursor-pointer p-2 relative inline-block">
               <div className="flex-shrink-0 w-20 h-20 border border-gray-200 rounded-md overflow-hidden">
                 <img
-                  src={product.image}
+                  src={product.images[0]}
                   className="w-full h-full object-center object-cover"
                 />
               </div>
@@ -44,7 +44,7 @@ export default function CheckoutCart() {
 
             <div className="space-y-1"> 
               <div className="text-sm font-medium capitalize">
-                {product.name}
+                {product.info.name}
               </div>
               <div className="text-xs uppercase">60mg / FL OZ</div>
               <div className="text-xs uppercase">x {product.quantity}</div>
@@ -52,7 +52,7 @@ export default function CheckoutCart() {
           </div>
 
           <div className="font-mono text-lg">
-            ${product.price * product.quantity}
+            ${product.info.price * product.quantity}
           </div>
         </div>
       ))}
