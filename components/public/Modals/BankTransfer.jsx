@@ -47,12 +47,12 @@ export default function BankTransfer({toggle}) {
                         transfer of 
                       </div>
 
-                      <div class="flex flex-col w-full border-opacity-50 text-sm tracking-tight font-medium">
-                        <div class="grid card rounded-box">
+                      <div className="flex flex-col w-full border-opacity-50 text-sm tracking-tight font-medium">
+                        <div className="grid card rounded-box">
                           $123.34 to Mercury Bank (USD Account 8335742807)
                         </div>
-                        <div class="divider text-sm">OR</div>
-                        <div class="grid card rounded-box">
+                        <div className="divider text-sm">OR</div>
+                        <div className="grid card rounded-box">
                           £34 to Clear Junction (GBP Account 33506986)
                         </div>
                       </div>
