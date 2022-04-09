@@ -4,7 +4,10 @@ export default function TopHeader({title}) {
     return (
       <Head>
         <title>{title} &mdash; Melina Store</title>
-        <meta name="description" content="" />
+        <meta
+          name="description"
+          content="Human hair, braided wigs, extensions and organically crafted beauty products."
+        />
         <link rel="icon" href="/favicon.ico" />
         <script
           async
