@@ -22,7 +22,11 @@ export default function Header() {
             className="w-56"
             alt=""
           /> */}
-          <svg xmlns="http://www.w3.org/2000/svg" className="fill-current w-56" viewBox="0 0 242.92 40.23">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="fill-current w-56"
+            viewBox="0 0 242.92 40.23"
+          >
             <g id="Layer_2" data-name="Layer 2">
               <g id="Layer_1-2" data-name="Layer 1">
                 <path d="M6.23 2.32 2.38 40.23H0c1-1.23 1.19-2.5 1.93-8.33L5.27.57h6.23L25 32.29 36 .57h6.18l7.31 39.66h-6.03L36.6 2.38 23.51 40.23h-1.19zM61.14.57h30l.56 2.26C89 2 83.63 1.53 79 1.42H66.41v18.75H88.9V21H66.41v18.38h13.71c4.65-.12 10-.63 12.75-1.42l-.57 2.27H61.14zM104.54.57h5.27v38.81h12.58c4.65-.12 10-.63 12.75-1.42l-.57 2.27h-30zM145.68.57H151v39.66h-5.27zM166.65 5.5v34.73h-1.82c.8-2.72.8-8 .85-12.7V.57h4.88l25.49 30.08V.57h1v39.66h-1.19zM230.05 25.61h-15.3v-.28l-5.89 14.9h-1.47c1.7-2.61 2-3.91 5.55-12.75L223.87 0h1l16.37 40.23h-5.38zm-.4-1-7.31-18.43L215 24.65zM239.49 0h1.36v.23h-.55l-.3 1.54h-.26L240 .25h-.55zM241.47 0l.33 1.36.8-1.36h.32l-.29 1.75h-.25l.21-1.25-.72 1.27h-.21L241.34.5l-.21 1.27h-.25l.27-1.77z" />
@@ -33,10 +37,10 @@ export default function Header() {
       </div>
 
       <div className="bg-black border-t border-gray-600 text-white">
-        <div className="grid grid-cols-6 gap-8">
+        <div className="grid md:grid-cols-7 grid-cols-2 gap-8">
           <div
             onClick={() => router.push("/products/all")}
-            className="px-10 flex cursor-pointer items-center justify-between bg-yellow-600 p-6 hover:bg-yellow-700"
+            className="md:px-10 flex cursor-pointer items-center justify-between bg-yellow-600 p-6 hover:bg-yellow-700"
           >
             <div className="text-sm uppercase tracking-widest">shop all</div>
             <svg
@@ -54,26 +58,33 @@ export default function Header() {
               />
             </svg>
           </div>
-          <div
-            onClick={() => router.push("/products/hair-essentials")}
-            className="place-self-center text-xs uppercase tracking-widest cursor-pointer hover:text-gray-400"
-          >
-            hair essentials
-          </div>
-          <div className="place-self-center text-xs uppercase tracking-widest opacity-50">
-            hair tips [ coming soon ]
-          </div>
-          <div
-            onClick={() => router.push("/products/hair-essentials")}
-            className="place-self-center text-xs uppercase tracking-widest cursor-pointer hover:text-gray-400"
-          >
-            hair basics
-          </div>
-          <div className="place-self-center text-xs uppercase tracking-widest opacity-50">
-            sale items [ coming soon]
+
+          <div className="col-span-5 md:grid grid-cols-5 w-full place-self-center hidden">
+            <div
+              onClick={() => router.push("/products/hair-essentials")}
+              className="place-self-center text-xs uppercase tracking-widest cursor-pointer hover:text-gray-400"
+            >
+              Braided Wigs
+            </div>
+            <div className="place-self-center text-xs uppercase tracking-widest opacity-50">
+              Hair Food
+            </div>
+            <div
+              onClick={() => router.push("/products/hair-essentials")}
+              className="place-self-center text-xs uppercase tracking-widest cursor-pointer hover:text-gray-400"
+            >
+              Locs
+            </div>
+            <div className="place-self-center text-xs uppercase tracking-widest opacity-50">
+              Crotchet
+            </div>
+
+            <div className="place-self-center text-xs uppercase tracking-widest opacity-50">
+              Braided Weave
+            </div>
           </div>
 
-          <div className="px-10 flex items-center space-x-4 place-self-center justify-self-end text-white">
+          <div className="md:px-10 px-6 flex items-center space-x-4 place-self-center justify-self-end text-white">
             <div
               onClick={showCart}
               className="relative inline-block cursor-pointer rounded-lg border border-stone-300 p-2 hover:bg-stone-200 hover:text-black"
@@ -133,7 +144,7 @@ export default function Header() {
             </div> */}
           </div>
         </div>
-      </div> 
+      </div>
     </>
   );
 }

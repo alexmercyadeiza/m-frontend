@@ -198,7 +198,7 @@ export default function Information() {
               </div>
             </div>
 
-            <div className="flex space-x-3 items-center">
+            <div className="md:flex grid space-x-3 space-y-4 md:space-y-0 items-center">
               <NextButton
                 status={next}
                 path={"/checkout/shipping"}
@@ -212,7 +212,7 @@ export default function Information() {
             <CheckoutCart />
           </Two>
         </Wrapper>
-        <Footer />
+        {/* <Footer /> */}
       </PublicWrapper>
     </>
   );

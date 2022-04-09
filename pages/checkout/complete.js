@@ -156,7 +156,7 @@ export default function Complete() {
                 </div>
               )}
 
-              <div className="flex space-x-3 items-center">
+              <div className="md:flex grid space-x-3 space-y-4 md:space-y-0 items-center">
                 <NextButton path={"/"} title={"Continue shopping"} />
 
                 <div className="text-xs font-medium space-x-1">
@@ -171,7 +171,7 @@ export default function Complete() {
             <CheckoutCart />
           </Two>
         </Wrapper>
-        <Footer />
+        {/* <Footer /> */}
       </PublicWrapper>
     </>
   );

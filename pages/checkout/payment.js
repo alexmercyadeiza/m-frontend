@@ -551,7 +551,7 @@ export default function Payment() {
             </div>
           </div> */}
 
-            <div className="flex space-x-3 items-center">
+            <div className="md:flex grid space-x-3 space-y-4 md:space-y-0 items-center">
               <button
                 className={loading ? `btn loading` : `btn`}
                 onClick={completeOrder}
@@ -570,7 +570,7 @@ export default function Payment() {
             <CheckoutCart />
           </Two>
         </Wrapper>
-        <Footer />
+        {/* <Footer /> */}
       </PublicWrapper>
 
       {openCA && <CashApp toggle={() => setOpenCA(false)} />}

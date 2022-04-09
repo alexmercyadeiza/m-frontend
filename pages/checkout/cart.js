@@ -27,9 +27,7 @@ export default function Cart() {
 
   return (
     <>
-      <TopHeader
-        title={"Cart Items"}
-      />
+      <TopHeader title={"Cart Items"} />
       <PublicWrapper>
         <Header />
         <Wrapper>
@@ -149,7 +147,7 @@ export default function Cart() {
               <div className="text-gray-400">No items in cart.</div>
             )}
 
-            <div className="flex space-x-3 pt-10 items-center">
+            <div className="md:flex grid space-x-3 space-y-4 md:space-y-0 pt-10 items-center">
               <NextButton
                 path={"/checkout/information"}
                 status={sharedState.cartItems.length === 0 ? true : false}
@@ -162,7 +160,9 @@ export default function Cart() {
             <CheckoutCart />
           </Two>
         </Wrapper>
-        <Footer />
+        
+        {/* <Footer /> */}
+
       </PublicWrapper>
     </>
   );

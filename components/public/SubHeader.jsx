@@ -1,7 +1,7 @@
 export default function SubHeader() {
   return (
     <div className="bg-black text-white px-10">
-      <div className="grid grid-cols-5 gap-8">
+      <div className="grid grid-cols-6 gap-8">
         <div className="flex cursor-pointer items-center justify-between space-x-3 bg-yellow-600 p-4 hover:bg-yellow-700">
           <div className="text-sm uppercase tracking-widest">shop all</div>
           <svg
@@ -20,16 +20,19 @@ export default function SubHeader() {
           </svg>
         </div>
         <div className="place-self-center text-xs uppercase tracking-widest">
-          hair essentials
+          Braided Wigs
         </div>
         <div className="place-self-center text-xs uppercase tracking-widest opacity-50">
-          hair tips [ coming soon ]
+          Hair Food
         </div>
         <div className="place-self-center text-xs uppercase tracking-widest">
-          hair basics
+          Locs
         </div>
         <div className="place-self-center text-xs uppercase tracking-widest opacity-50">
-          sale items [ coming soon]
+          Crotchet
+        </div>
+        <div className="place-self-center text-xs uppercase tracking-widest opacity-50">
+          Braided Weave
         </div>
       </div>
     </div>

@@ -10,13 +10,13 @@ export default function Footer() {
 
   return (
     <>
-      <div className="border-t opacity-40">
+      <div className="border-t">
         <div className="py-8 px-10 flex items-center justify-between text-xs tracking-tight font-semibold">
           <div className="flex space-x-10">
             <a href="#">Refund policy</a>
-            <a href="#">Shipping policy</a>
-            <a href="#">Privacy policy</a>
-            <a href="#">Terms of service</a>
+            <a className="hidden md:block" href="#">Shipping policy</a>
+            <a className="hidden md:block" href="#">Privacy policy</a>
+            <a className="hidden md:block" href="#">Terms of service</a>
           </div>
 
           <a

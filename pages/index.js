@@ -45,28 +45,26 @@ export default function Home() {
 
   return (
     <>
-      <TopHeader
-        title={"Home"}
-      />
+      <TopHeader title={"Home"} />
       <PublicWrapper>
         <Header />
         {/* <SubHeader /> */}
 
         {/* {JSON.stringify()} */}
 
-        <div className="mx-10 space-y-16 py-16 mb-20">
+        <div className="md:mx-10 mx-8 space-y-16 md:py-16 py-8 mb-20">
           <div className="grid lg:grid-cols-3 gap-8 h-[40rem]">
             {/* Hair Essentials */}
             <div
               onClick={() => router.push("/products/hair-essentials")}
-              className="cursor-pointer rounded bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+              className="cursor-pointer bg-blend-overlay bg-zinc-600 rounded bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
               style={{
                 backgroundImage: `url('https://images.pexels.com/photos/1972113/pexels-photo-1972113.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)`,
               }}
             >
               <div className="p-10 text-white space-y-1">
                 <div className="text-3xl tracking-tight font-light">
-                  Hair Essentials
+                  Braided Wigs
                 </div>
                 <div className="items-center flex space-x-1">
                   <div className="text-xs">SHOP NOW</div>
@@ -90,7 +88,7 @@ export default function Home() {
             <div className="hidden md:grid gap-8">
               {/* Hair Tips */}
               <div
-                className="cursor-pointer rounded bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+                className="cursor-pointer bg-blend-overlay bg-zinc-600 rounded bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
                 style={{
                   backgroundImage: `url(https://images.pexels.com/photos/2661255/pexels-photo-2661255.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)`,
                 }}
@@ -123,7 +121,7 @@ export default function Home() {
               {/* Hair Basics */}
               <div
                 onClick={() => router.push("/products/hair-basics")}
-                className="cursor-pointer rounded bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+                className="cursor-pointer bg-blend-overlay bg-zinc-600 rounded bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
                 style={{
                   backgroundImage: `url('https://cdn.pixabay.com/photo/2021/09/23/17/13/shampoo-6650408_960_720.jpg')`,
                 }}
@@ -154,7 +152,7 @@ export default function Home() {
             </div>
             {/* On Sale */}
             <div
-              className="cursor-pointer rounded bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+              className="cursor-pointer bg-blend-overlay bg-zinc-600 rounded bg-center bg-cover transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
               style={{
                 backgroundImage: `url('https://images.pexels.com/photos/7319324/pexels-photo-7319324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
               }}
@@ -190,7 +188,7 @@ export default function Home() {
           </div>
 
           <div className="w-full">
-            <div className="grid grid-cols-5 gap-8">
+            <div className="grid md:grid-cols-5 gap-8">
               {prods.map((p) => (
                 <Product
                   key={p.id}

@@ -288,7 +288,7 @@ export default function Product() {
           </Wrapper>
         )}
         {/* Footer  */}
-        <Footer />
+        {/* <Footer /> */}
       </PublicWrapper>
     </>
   );

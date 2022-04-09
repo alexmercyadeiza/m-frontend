@@ -9,7 +9,7 @@ export default function Breadcrumbs() {
   // const status = sharedState.cartItems.length === 0 ? false : true;
 
   return (
-    <div className="text-2xs breadcrumbs">
+    <div className="text-2xs breadcrumbs hidden md:block">
       <ul>
         <li
           // onClick={() => {
